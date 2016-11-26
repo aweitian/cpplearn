@@ -13,12 +13,17 @@ int main()
 
 	int dwError;
 	HLOCAL hlocal = NULL;
+
+	//Creates a language identifier from a primary language identifier and a sublanguage identifier.
 	DWORD systemLocale = MAKELANGID(LANG_NEUTRAL,SUBLANG_NEUTRAL);
 
 	while(TRUE)
 	{
 		cout << "请输入ERROR CODE:" << endl;
 		cin >> dwError;
+		if(dwError == 0)break;
+		//这个函数是用来格式化消息字符串，就是处理消息资源的。
+		//消息资源是由mc.exe编译的，详细请在msdn中搜索mc.exe。
 		BOOL fOk = FormatMessage(
 			FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_ALLOCATE_BUFFER,
 			NULL,
